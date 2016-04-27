@@ -30,7 +30,7 @@ int main(void){
         sprintf(dirName,"move_trace");
         mkdir(dirName,S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 
-        sprintf(fileloc,"move_trace/Node%d", i+1);
+        sprintf(fileloc,"move_trace/Node%d.txt", i);
         n.PrintTrace(fileloc);
 
         while(sim_time<END_TIME){
