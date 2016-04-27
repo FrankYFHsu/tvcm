@@ -3,10 +3,10 @@
 #include <stdio.h>
 #include <math.h>
 
-#define USE_CONFIG_FILE 0 //if config files are used
+#define USE_CONFIG_FILE 1 //if config files are used
 #define TIERED_COMMUNITY 0 //if the communities are tiered or randomly assigned
 #define TORUS_BOUNDARY 1 //if the community boundaries are torus or reflective
-#define TRACE_FORMAT 1 //0: (t x y) format, 1: NS-2 format
+#define TRACE_FORMAT 0 //0: (t x y) format, 1: NS-2 format
 #define PERIOD 2  //number of unique time periods
 #define COMMTIER 3 //number of community tiers (or communities)
 #define STRUCTURE 100 //longest structure you can have
