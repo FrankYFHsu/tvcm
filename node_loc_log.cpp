@@ -1,3 +1,5 @@
+#include <sys/types.h> 
+#include <sys/stat.h>
 #include "Node.h"
 #include <stdio.h>
 #include <math.h>
@@ -23,6 +25,11 @@ int main(void){
         sim_time = 0;
         n.Initialize(i);
         
+        char dirName[20];
+
+        sprintf(dirName,"move_trace");
+        mkdir(dirName,S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+
         sprintf(fileloc,"move_trace/Node%d", i+1);
         n.PrintTrace(fileloc);
 
