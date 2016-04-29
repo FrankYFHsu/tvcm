@@ -3,29 +3,28 @@
 #include <stdio.h>
 #include <math.h>
 
-#define USE_CONFIG_FILE 1 //if config files are used
-#define TIERED_COMMUNITY 0 //if the communities are tiered or randomly assigned
+#define USE_CONFIG_FILE 0 //if config files are used
+#define TIERED_COMMUNITY 1 //if the communities are tiered or randomly assigned
 #define TORUS_BOUNDARY 1 //if the community boundaries are torus or reflective
 #define TRACE_FORMAT 0 //0: (t x y) format, 1: NS-2 format
-#define PERIOD 2  //number of unique time periods
-#define COMMTIER 3 //number of community tiers (or communities)
+#define PERIOD 3  //number of unique time periods
+#define COMMTIER 6 //number of community tiers (or communities)
 #define STRUCTURE 100 //longest structure you can have
-#define XDIM 1200.0  //size of simulation area
-#define YDIM 1200.0  //size of simulation area
-#define TIER_LENGTH 80.0 // 1/2 of edge length of communities
-#define TIME_STEP 0.1 //time interval to update node locations
+#define XDIM 1000.0  //size of simulation area
+#define YDIM 1000.0  //size of simulation area
+#define TIER_LENGTH 25.0 // 1/2 of edge length of communities
+#define TIME_STEP 1 //time interval to update node locations
 
-    static double state_prob[PERIOD][COMMTIER] = {{0.8,0.15,0.05},{0.7,0.20,0.10}};
-    static double time_period_dur[PERIOD]={5760,2880};
-    static int time_period_structure[STRUCTURE]={0,1};
-    static int number_of_item_in_structure = 2;
-    static double pause_max[PERIOD][COMMTIER]={{50,20,15},{30,20,30}};
+    static const double state_prob[PERIOD][COMMTIER] = {{0.5,0.3,0.10,0.08,0.015,0.005},{0.6,0.2,0.10,0.08,0.015,0.005},{0.5,0.3,0.10,0.08,0.015,0.005}};
+    static const double time_period_dur[PERIOD]={5760,2880,2880};
+    static const int time_period_structure[STRUCTURE]={0,1,0,1,0,1,0,1,0,1,0,2,0,2};
+    static const int number_of_item_in_structure = 14;
+    static const double pause_max[PERIOD][COMMTIER]={{85,60,50,25,10,1},{35,25,25,20,20,10},{85,60,50,25,10,1}};
+    static const double l_avg[PERIOD][COMMTIER] = {{300,500,500,800,1000,1000},{400,600,700,900,1000,1000},{300,500,500,800,1000,1000}};
 
-    static double l_avg[PERIOD][COMMTIER] = {{140,600,1500},{200,500,1600}};
-
-    static double vmin[PERIOD][COMMTIER] = {{4.999,4.999,4.999},{4.999,4.999,4.999}};
-    static double vmax[PERIOD][COMMTIER] = {{15.001, 15.001, 15.001},{15.001, 15.001, 15.001}};
-    static double vavg[PERIOD][COMMTIER] = {{10.0, 10.0, 10.0},{10.0, 10.0, 10.0}};
+    static double vmin[PERIOD][COMMTIER] = {{4.999,4.999,4.999,4.999,4.999,4.999},{4.999,4.999,4.999,4.999,4.999,4.999}};
+    static double vmax[PERIOD][COMMTIER] = {{15.001, 15.001, 15.001, 15.001, 15.001, 15.001},{15.001, 15.001, 15.001, 15.001, 15.001, 15.001}};
+    static double vavg[PERIOD][COMMTIER] = {{10.0, 10.0, 10.0, 10.0, 10.0, 10.0},{10.0, 10.0, 10.0, 10.0, 10.0, 10.0}};
 
 
 class Node{
@@ -72,3 +71,4 @@ public:
 };
 #endif
     
+
