@@ -5,7 +5,7 @@
 
 #define USE_CONFIG_FILE 0 //if config files are used
 #define TIERED_COMMUNITY 1 //if the communities are tiered or randomly assigned
-#define TORUS_BOUNDARY 1 //if the community boundaries are torus or reflective
+#define TORUS_BOUNDARY 0 //if the community boundaries are torus or reflective
 #define TRACE_FORMAT 0 //0: (t x y) format, 1: NS-2 format
 #define PERIOD 3  //number of unique time periods
 #define COMMTIER 6 //number of community tiers (or communities)
@@ -16,15 +16,15 @@
 #define TIME_STEP 1 //time interval to update node locations
 
     static const double state_prob[PERIOD][COMMTIER] = {{0.5,0.3,0.10,0.08,0.015,0.005},{0.6,0.2,0.10,0.08,0.015,0.005},{0.5,0.3,0.10,0.08,0.015,0.005}};
-    static const double time_period_dur[PERIOD]={5760,2880,2880};
+    static const double time_period_dur[PERIOD]={57600,28800,28800};
     static const int time_period_structure[STRUCTURE]={0,1,0,1,0,1,0,1,0,1,0,2,0,2};
     static const int number_of_item_in_structure = 14;
-    static const double pause_max[PERIOD][COMMTIER]={{85,60,50,25,10,1},{35,25,25,20,20,10},{85,60,50,25,10,1}};
+    static const double pause_max[PERIOD][COMMTIER]={{3600,2400,1200,900,600,60},{3600,2400,2400,2000,2000,1000},{3600,2400,1200,900,600,60}};
     static const double l_avg[PERIOD][COMMTIER] = {{300,500,500,800,1000,1000},{400,600,700,900,1000,1000},{300,500,500,800,1000,1000}};
 
-    static double vmin[PERIOD][COMMTIER] = {{4.999,4.999,4.999,4.999,4.999,4.999},{4.999,4.999,4.999,4.999,4.999,4.999}};
-    static double vmax[PERIOD][COMMTIER] = {{15.001, 15.001, 15.001, 15.001, 15.001, 15.001},{15.001, 15.001, 15.001, 15.001, 15.001, 15.001}};
-    static double vavg[PERIOD][COMMTIER] = {{10.0, 10.0, 10.0, 10.0, 10.0, 10.0},{10.0, 10.0, 10.0, 10.0, 10.0, 10.0}};
+    static double vmin[PERIOD][COMMTIER] = {{1,1,1,1,1,1},{1,1,1,1,1,1}};
+    static double vmax[PERIOD][COMMTIER] = {{1.25,1.25,1.25,1.25,1.25,1.25},{1.25,1.25,1.25,1.25,1.25,1.25}};
+    static double vavg[PERIOD][COMMTIER] = {{1.5,1.5,1.5,1.5,1.5,1.5},{1.5,1.5,1.5,1.5,1.5,1.5}};
 
 
 class Node{
@@ -70,5 +70,3 @@ public:
 
 };
 #endif
-    
-
