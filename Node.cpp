@@ -106,7 +106,7 @@ void Node::Initialize(int nodeid){
                state = i;
                break;
             }
-         } 
+         }
          //printf("state %d\n", state);
 
          currentx = (double) rand()/RAND_MAX * (comm_xupper[period][state]-comm_x[period][state]) + comm_x[period][state];
@@ -144,7 +144,7 @@ void Node::Initialize(int nodeid){
                   comm_xupper[i][j] = XDIM;
                if(comm_yupper[i][j]>YDIM)
                   comm_yupper[i][j] = YDIM;
-            }    
+            }
             //set the largest comm == sim area
             comm_x[i][COMMTIER-1]=0;
             comm_y[i][COMMTIER-1]=0;
@@ -188,7 +188,7 @@ void Node::Initialize(int nodeid){
          next_event_time = 0;
 
       }
-   }else{ //If read setting from file 
+   }else{ //If read setting from file
 
       FILE *parameters;
       char fileloc[40];
@@ -362,8 +362,11 @@ double Node::ExecuteEvent(double sim_time){
       travel_dir = (double) rand()/RAND_MAX * 2 *PAI - PAI;
       travel_speed = (double) rand()/RAND_MAX * (vmax[period][state]-vmin[period][state]) + vmin[period][state];
       dur_mean = (double)l_avg[period][state]/(double)vavg[period][state];
-
+      //the following will return a variable ~exp with mean (dur_mean);
       travel_duration = - dur_mean * log((double) rand()/RAND_MAX);
+      //try to let duration time be integer
+      travel_duration = round(travel_duration);
+
       travel_stop_time = sim_time + travel_duration;
       if(travel_stop_time > sim_time + TIME_STEP){
          next_event_type = 2;
@@ -383,6 +386,7 @@ double Node::ExecuteEvent(double sim_time){
       }
 
    }else{
+      //next_event_type==2
 
       double time_diff = next_event_time - sim_time;
       sim_time = next_event_time;
@@ -391,10 +395,10 @@ double Node::ExecuteEvent(double sim_time){
       currentx = currentx + travel_speed*time_diff*cos(travel_dir);
       currenty = currenty + travel_speed*time_diff*sin(travel_dir);
 
-      bool coordinate_change = false; 
+      bool coordinate_change = false;
       //adjust the x,y coordinate
       if(!TORUS_BOUNDARY){
-         //reflective boundary 
+         //reflective boundary
          if(currentx>comm_xupper[period][state]){
             currentx = comm_xupper[period][state] - (currentx-comm_xupper[period][state]);
             travel_dir = reflectx(travel_dir);
@@ -496,6 +500,8 @@ double Node::ExecuteEvent(double sim_time){
          next_event_type = 1;
          //pick pause time
          next_event_time = travel_stop_time + (double) rand()/RAND_MAX * pause_max[period][state];
+         //try to let pause time be integer
+         next_event_time = round(next_event_time);
 
          //decide the next state
          double random_number=(double) rand()/RAND_MAX;
@@ -512,12 +518,12 @@ double Node::ExecuteEvent(double sim_time){
          //printf("next state %d, current state %d, comm (%lf %lf) - (%lf %lf)\n", next_state, state, comm_x[period][next_state], comm_y[period][next_state], comm_xupper[period][next_state], comm_yupper[period][next_state]);
          if(currentx<comm_x[period][next_state]||currentx>comm_xupper[period][next_state]||currenty<comm_y[period][next_state]||currenty>comm_yupper[period][next_state]){ //currently out of the next community, move to inner community, warp
             nextx = (double) rand()/RAND_MAX * (comm_xupper[period][next_state]-comm_x[period][next_state]) +comm_x[period][next_state];
-            nexty = (double) rand()/RAND_MAX * (comm_yupper[period][next_state]-comm_y[period][next_state]) +comm_y[period][next_state]; 
+            nexty = (double) rand()/RAND_MAX * (comm_yupper[period][next_state]-comm_y[period][next_state]) +comm_y[period][next_state];
          }else{
             nextx = currentx;
             nexty = currenty;
          }
-         state=next_state; 
+         state=next_state;
       }
 
       //if next event time larger than time period boundary, cancel the event and restart from a new movement
