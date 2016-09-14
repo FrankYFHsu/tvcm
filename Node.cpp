@@ -585,7 +585,14 @@ double Node::ExecuteEvent(double sim_time){
    //end of execute event, print the trace if needed in (t x y) format
    if(keeptrace){
       if(!TRACE_FORMAT){
-         fprintf(outfile,"%lf  %lf  %lf\n", sim_time, currentx, currenty);
+         
+         if(TIME_STEP==1){
+            fprintf(outfile,"%.0lf  %lf  %lf\n", sim_time, currentx, currenty);
+         }else{
+            fprintf(outfile,"%lf  %lf  %lf\n", sim_time, currentx, currenty);
+
+         }
+         
       }
    }
 
