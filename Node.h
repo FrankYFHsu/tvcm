@@ -15,16 +15,16 @@
 #define TIER_LENGTH 25.0 // 1/2 of edge length of communities
 #define TIME_STEP 1 //time interval to update node locations
 
-    static const double state_prob[PERIOD][COMMTIER] = {{0.5,0.3,0.10,0.08,0.015,0.005},{0.6,0.2,0.10,0.08,0.015,0.005},{0.5,0.3,0.10,0.08,0.015,0.005}};
-    static const double time_period_dur[PERIOD]={57600,28800,28800};
-    static const int time_period_structure[STRUCTURE]={0,1,0,1,0,1,0,1,0,1,0,2,0,2};
-    static const int number_of_item_in_structure = 14;
-    static const double pause_max[PERIOD][COMMTIER]={{3600,2400,1200,900,600,60},{3600,2400,2400,2000,2000,1000},{3600,2400,1200,900,600,60}};
+    static const double state_prob[PERIOD][COMMTIER] = {{0.9,0.05,0.025,0.015,0.005,0.005},{0.6,0.2,0.10,0.08,0.015,0.005},{0.5,0.3,0.10,0.08,0.015,0.005}};
+    static const double time_period_dur[PERIOD]={43200,28800,14400};
+    static const int time_period_structure[STRUCTURE]={0,1,2};
+    static const int number_of_item_in_structure = 3;
+    static const double pause_max[PERIOD][COMMTIER]={{21600,2400,1200,900,600,60},{3600,2400,2400,2000,2000,1000},{3600,2400,1200,900,600,60}};
     static const double l_avg[PERIOD][COMMTIER] = {{300,500,500,800,1000,1000},{400,600,700,900,1000,1000},{300,500,500,800,1000,1000}};
 
-    static double vmin[PERIOD][COMMTIER] = {{1,1,1,1,1,1},{1,1,1,1,1,1}};
-    static double vmax[PERIOD][COMMTIER] = {{1.25,1.25,1.25,1.25,1.25,1.25},{1.25,1.25,1.25,1.25,1.25,1.25}};
-    static double vavg[PERIOD][COMMTIER] = {{1.5,1.5,1.5,1.5,1.5,1.5},{1.5,1.5,1.5,1.5,1.5,1.5}};
+    static double vmin[PERIOD][COMMTIER] = {{1,1,1,1,1,1},{1,1,1,1,1,1},{1,1,1,1,1,1}};
+    static double vmax[PERIOD][COMMTIER] = {{1.25,1.25,1.25,1.25,1.25,1.25},{1.25,1.25,1.25,1.25,1.25,1.25},{1.25,1.25,1.25,1.25,1.25,1.25}};
+    static double vavg[PERIOD][COMMTIER] = {{1.5,1.5,1.5,1.5,1.5,1.5},{1.5,1.5,1.5,1.5,1.5,1.5},{1.5,1.5,1.5,1.5,1.5,1.5}};
 
 
 class Node{

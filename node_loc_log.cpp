@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define END_TIME 86400.0
-#define NODES 50
+#define END_TIME 864000.0 //10 days
+#define NODES 30
 
 
 int main(void){
