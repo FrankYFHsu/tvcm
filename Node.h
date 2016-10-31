@@ -10,8 +10,8 @@
 #define PERIOD 3  //number of unique time periods
 #define COMMTIER 6 //number of community tiers (or communities)
 #define STRUCTURE 100 //longest structure you can have
-#define XDIM 1000.0  //size of simulation area
-#define YDIM 1000.0  //size of simulation area
+#define XDIM 1500.0  //size of simulation area
+#define YDIM 1500.0  //size of simulation area
 #define TIER_LENGTH 25.0 // 1/2 of edge length of communities
 #define TIME_STEP 1 //time interval to update node locations
 
