@@ -3,4 +3,4 @@ node_parameter_files
 MOVELOG
 MT
 HT
-move_trace/
+move_trace**/

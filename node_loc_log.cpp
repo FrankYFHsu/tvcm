@@ -7,7 +7,7 @@
 #include <time.h>
 
 #define END_TIME 864000.0 //10 days
-#define NODES 50
+#define NODES 200
 
 
 int main(void){
@@ -17,13 +17,15 @@ int main(void){
     FILE *out;
     char fileloc[50];
 
-    printf("Input a random seed \n");
-    int seed;
-    scanf("%d", &seed);
-    printf("Seed = %d\n",seed);
+    time_t t1 = time(NULL);
+
+    //printf("Input a random seed \n");
+    long seed = t1;
+    //scanf("%ld", &seed);
+    printf("Seed = %ld\n",seed);
 
     //default is 1?  
-    srand( (unsigned)seed );
+    srand( seed );
 
     for(int i=0; i<NODES; i++){
 
@@ -33,10 +35,10 @@ int main(void){
         
         char dirName[20];
 
-        sprintf(dirName,"move_trace");
+        sprintf(dirName,"move_trace%ld",seed);
         mkdir(dirName,S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 
-        sprintf(fileloc,"move_trace/Node%d.txt", i);
+        sprintf(fileloc,"move_trace%ld/Node%d.txt",seed, i);
         n.PrintTrace(fileloc);
 
         while(sim_time<END_TIME){
