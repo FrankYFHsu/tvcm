@@ -10,8 +10,9 @@
 #define NODES 200
 
 
-int main(void){
+int main(int argc, char *argv[ ]){
 
+    long seed;
     Node n;
     double sim_time;
     FILE *out;
@@ -19,8 +20,13 @@ int main(void){
 
     time_t t1 = time(NULL);
 
-    //printf("Input a random seed \n");
-    long seed = t1;
+
+    if(argc==1){
+      seed = t1;
+    }else{
+      long conv = strtol(argv[1], NULL, 10);
+      seed = conv;
+    }
     //scanf("%ld", &seed);
     printf("Seed = %ld\n",seed);
 
