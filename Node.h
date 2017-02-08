@@ -19,7 +19,7 @@
     static const double time_period_dur[PERIOD]={28800,28800,28800};
     static const int time_period_structure[STRUCTURE]={0,1,2};
     static const int number_of_item_in_structure = 3;
-    static const double pause_max[PERIOD][COMMTIER]={{25920,1440,720,432,144,144},{25920,1440,720,432,144,144},{25920,1440,720,432,144,144},{25920,1440,720,432,144,144}};
+    static const double pause_max[PERIOD][COMMTIER]={{25920,1440,720,432,144,144},{25920,1440,720,432,144,144},{25920,1440,720,432,144,144}};
     static const double l_avg[PERIOD][COMMTIER] = {{300,500,500,800,1000,1000},{300,500,500,800,1000,1000},{300,500,500,800,1000,1000}};
 
     static double vmin[PERIOD][COMMTIER] = {{1,1,1,1,1,1},{1,1,1,1,1,1},{1,1,1,1,1,1}};
