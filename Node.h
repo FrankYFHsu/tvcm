@@ -7,24 +7,24 @@
 #define TIERED_COMMUNITY 1 //if the communities are tiered or randomly assigned
 #define TORUS_BOUNDARY 0 //if the community boundaries are torus or reflective
 #define TRACE_FORMAT 0 //0: (t x y) format, 1: NS-2 format
-#define PERIOD 3  //number of unique time periods
+#define PERIOD 6  //number of unique time periods
 #define COMMTIER 6 //number of community tiers (or communities)
 #define STRUCTURE 100 //longest structure you can have
-#define XDIM 1000.0  //size of simulation area
-#define YDIM 1000.0  //size of simulation area
+#define XDIM 1500.0  //size of simulation area
+#define YDIM 1500.0  //size of simulation area
 #define TIER_LENGTH 25.0 // 1/2 of edge length of communities
 #define TIME_STEP 1 //time interval to update node locations
 
-    static const double state_prob[PERIOD][COMMTIER] = {{0.9,0.05,0.025,0.015,0.005,0.005},{0.9,0.05,0.025,0.015,0.005,0.005},{0.9,0.05,0.025,0.015,0.005,0.005}};
-    static const double time_period_dur[PERIOD]={14400,28800,43200};
-    static const int time_period_structure[STRUCTURE]={0,1,2};
-    static const int number_of_item_in_structure = 3;
-    static const double pause_max[PERIOD][COMMTIER]={{12960,720,360,216,72,72},{25920,1440,720,432,144,144},{38880,2160,1080,648,216,216}};
-    static const double l_avg[PERIOD][COMMTIER] = {{300,500,500,800,1000,1000},{300,500,500,800,1000,1000},{300,500,500,800,1000,1000}};
+    static const double state_prob[PERIOD][COMMTIER] = {{0.9,0.05,0.025,0.015,0.005,0.005},{0.9,0.05,0.025,0.015,0.005,0.005},{0.9,0.05,0.025,0.015,0.005,0.005},{0.9,0.05,0.025,0.015,0.005,0.005},{0.9,0.05,0.025,0.015,0.005,0.005},{0.9,0.05,0.025,0.015,0.005,0.005}};
+    static const double time_period_dur[PERIOD]={14400,14400,14400,14400,14400,14400};
+    static const int time_period_structure[STRUCTURE]={0,1,2,3,4,5};
+    static const int number_of_item_in_structure = 6;
+    static const double pause_max[PERIOD][COMMTIER]={{12960,720,360,216,72,72},{12960,720,360,216,72,72},{12960,720,360,216,72,72},{12960,720,360,216,72,72},{12960,720,360,216,72,72},{12960,720,360,216,72,72}};
+    static const double l_avg[PERIOD][COMMTIER] = {{300,500,500,800,1000,1000},{300,500,500,800,1000,1000},{300,500,500,800,1000,1000},{300,500,500,800,1000,1000},{300,500,500,800,1000,1000},{300,500,500,800,1000,1000}};
 
-    static double vmin[PERIOD][COMMTIER] = {{1,1,1,1,1,1},{1,1,1,1,1,1},{1,1,1,1,1,1}};
-    static double vavg[PERIOD][COMMTIER] = {{1.25,1.25,1.25,1.25,1.25,1.25},{1.25,1.25,1.25,1.25,1.25,1.25},{1.25,1.25,1.25,1.25,1.25,1.25}};
-    static double vmax[PERIOD][COMMTIER] = {{1.5,1.5,1.5,1.5,1.5,1.5},{1.5,1.5,1.5,1.5,1.5,1.5},{1.5,1.5,1.5,1.5,1.5,1.5}};
+    static double vmin[PERIOD][COMMTIER] = {{1,1,1,1,1,1},{1,1,1,1,1,1},{1,1,1,1,1,1},{1,1,1,1,1,1},{1,1,1,1,1,1},{1,1,1,1,1,1}};
+    static double vavg[PERIOD][COMMTIER] = {{1.25,1.25,1.25,1.25,1.25,1.25},{1.25,1.25,1.25,1.25,1.25,1.25},{1.25,1.25,1.25,1.25,1.25,1.25},{1.25,1.25,1.25,1.25,1.25,1.25},{1.25,1.25,1.25,1.25,1.25,1.25},{1.25,1.25,1.25,1.25,1.25,1.25}};
+    static double vmax[PERIOD][COMMTIER] = {{1.5,1.5,1.5,1.5,1.5,1.5},{1.5,1.5,1.5,1.5,1.5,1.5},{1.5,1.5,1.5,1.5,1.5,1.5},{1.5,1.5,1.5,1.5,1.5,1.5},{1.5,1.5,1.5,1.5,1.5,1.5},{1.5,1.5,1.5,1.5,1.5,1.5}};
 
 
 class Node{
